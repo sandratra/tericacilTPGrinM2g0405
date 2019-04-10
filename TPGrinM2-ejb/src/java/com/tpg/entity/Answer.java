@@ -6,10 +6,12 @@
 package com.tpg.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,7 +24,46 @@ public class Answer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @OneToOne
+    private User user;
+    private String content;
+    private Date date;
+    private boolean hasSolved;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public boolean isHasSolved() {
+        return hasSolved;
+    }
+
+    public void setHasSolved(boolean hasSolved) {
+        this.hasSolved = hasSolved;
+    }
+    
+    
     public Long getId() {
         return id;
     }

@@ -26,8 +26,17 @@ public class User implements Serializable {
     
     private String firstname;
     private String lastname;
+    private String email;
     @OneToOne
     private UserType userType;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirstname() {
         return firstname;

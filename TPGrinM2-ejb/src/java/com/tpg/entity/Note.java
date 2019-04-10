@@ -6,10 +6,13 @@
 package com.tpg.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,6 +25,29 @@ public class Note implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @OneToMany
+    private List<Answer> answer;
+    @OneToOne
+    private User user;
+
+    public List<Answer> getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(List<Answer> answer) {
+        this.answer = answer;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
 
     public Long getId() {
         return id;
