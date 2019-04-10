@@ -27,6 +27,7 @@ public class Question implements Serializable {
     private String title;
     private String content;
     private Date date;
+    private boolean resolved;
 
     public Long getId() {
         return id;
@@ -34,6 +35,14 @@ public class Question implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isResolved() {
+        return resolved;
+    }
+
+    public void setResolved(boolean resolved) {
+        this.resolved = resolved;
     }
 
     public String getTitle() {
