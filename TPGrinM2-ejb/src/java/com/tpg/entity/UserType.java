@@ -22,7 +22,6 @@ public class UserType implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
     private String label;
     
     public String getLabel() {
