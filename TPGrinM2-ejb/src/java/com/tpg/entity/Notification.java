@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,6 +26,10 @@ public class Notification implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDateTime date;
+    @OneToOne
+    private User user;
+    @OneToOne
+    private Question question;
 
     public Long getId() {
         return id;
@@ -40,6 +45,22 @@ public class Notification implements Serializable {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 
     @Override
