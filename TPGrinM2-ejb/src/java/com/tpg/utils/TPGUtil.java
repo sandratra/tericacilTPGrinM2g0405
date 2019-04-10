@@ -10,5 +10,7 @@ package com.tpg.utils;
  * @author EBI
  */
 public abstract class TPGUtil {
-    
+    public String[] getTagsFromString(String tags){
+        return tags.split(";");
+    }
 }
