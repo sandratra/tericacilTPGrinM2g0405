@@ -2,3 +2,6 @@ nbproject/
 build/
 dist/
 *.properties
+TPGrinM2-ejb/nbproject/private/private.properties
+TPGrinM2-war/nbproject/private/private.properties
+nbproject/private/private.properties
