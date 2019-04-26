@@ -27,6 +27,7 @@ public class User implements Serializable {
     private String firstname;
     private String lastname;
     private String email;
+    private String password;
     @OneToOne
     private UserType userType;
 
@@ -60,6 +61,14 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public UserType getUserType() {
