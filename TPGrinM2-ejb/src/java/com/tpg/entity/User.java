@@ -103,5 +103,4 @@ public class User implements Serializable {
     public String toString() {
         return "entity.User[ id=" + id + " ]";
     }
-    
 }
