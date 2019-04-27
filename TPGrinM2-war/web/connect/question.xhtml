@@ -19,13 +19,13 @@ and open the template in the editor.
 
             <h:panelGrid columns="3">
                 <h:outputText value="Titre : " />
-                <h:inputText id="title" value="#{questionBean.question.title}" 
+                <h:inputText id="title" value="#{questionBean.title}" 
                              required="true"
                              requiredMessage="Vous devez entrer un titre"/>
                 <h:message for="title" errorStyle="font-weight: bold; color: red;"/>
                 <h:outputText value="Date : "/>
                 <h:inputText id="date" 
-                             value="#{questionBean.question.date}" 
+                             value="#{questionBean.datePost}" 
                              required="true"
                              requiredMessage="Vous devez entrer une date">
                     <f:convertDateTime pattern="yyyy-MM-dd"/> 
@@ -33,7 +33,7 @@ and open the template in the editor.
                 <h:message for="date" errorStyle="font-weight: bold; color: red;"/>
                 <h:outputText value="Contenu : "/>
                 <h:inputTextarea id="contenu"
-                               value="#{questionBean.question.content}"/>
+                               value="#{questionBean.content}"/>
             </h:panelGrid>
             <p><h:commandButton value="Login" action="#{questionBean.saveQuestion}"/></p>
         </h:form>
