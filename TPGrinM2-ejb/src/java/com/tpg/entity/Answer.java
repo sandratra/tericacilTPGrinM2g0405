@@ -30,6 +30,16 @@ public class Answer implements Serializable {
     private String content;
     private Date date;
     private boolean hasSolved;
+    @OneToOne
+    private Question question;
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 
     public Member getUser() {
         return user;
