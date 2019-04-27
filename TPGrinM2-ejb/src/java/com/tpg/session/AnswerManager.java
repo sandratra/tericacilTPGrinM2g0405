@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -39,9 +40,12 @@ public class AnswerManager {
     }
     
     public List<Answer> getAnswersQuestion(int idquestion){
-        String requete = "select a from Answer a where ";
+        String requete = "select a from Answer a where a.question_id = :idquestion order by a.date asc";
+        Query query = em.createQuery(requete);
+        query.setParameter("idquestion", idquestion);
+        
         List<Answer> liste = null;
-        //liste = query.getResultList(); 
+        liste = query.getResultList(); 
         return liste;
     }
 }

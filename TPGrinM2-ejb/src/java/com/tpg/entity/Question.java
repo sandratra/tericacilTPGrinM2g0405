@@ -7,7 +7,9 @@ package com.tpg.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,12 +26,21 @@ public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Member user;
     private String title;
     private String content;
     private LocalDateTime datepost;
     private boolean resolved;
+    
+
+    public Member getUser() {
+        return user;
+    }
+
+    public void setUser(Member user) {
+        this.user = user;
+    }
 
     public Long getId() {
         return id;

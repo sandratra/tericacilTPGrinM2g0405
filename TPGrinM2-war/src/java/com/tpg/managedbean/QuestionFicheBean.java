@@ -9,10 +9,11 @@ import com.tpg.entity.Answer;
 import com.tpg.entity.Question;
 import com.tpg.session.AnswerManager;
 import com.tpg.session.QuestionManager;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 
 /**
  *
@@ -20,7 +21,7 @@ import javax.faces.bean.ViewScoped;
  */
 @Named(value = "questionFicheBean")
 @ViewScoped
-public class QuestionFicheBean {
+public class QuestionFicheBean implements Serializable{
 
     private int id;
     private Question question;
