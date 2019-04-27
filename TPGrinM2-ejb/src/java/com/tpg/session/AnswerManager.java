@@ -5,7 +5,8 @@
  */
 package com.tpg.session;
 
-import com.tpg.entity.Question;
+import com.tpg.entity.Answer;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
@@ -13,15 +14,12 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author asus
+ * @author hobia
  */
 @Stateless
 @LocalBean
-public class QuestionManager {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    @PersistenceContext(unitName = "TPGrinM2-ejbPU")
+public class AnswerManager {
+ @PersistenceContext(unitName = "TPGrinM2-ejbPU")
     private EntityManager em;
 
     private void save(Object object) {
@@ -32,15 +30,18 @@ public class QuestionManager {
         em.merge(object);
     }
     
-    public void createQuestion(Question question){
-        save(question);
+    public void createAnswer(Answer answer){
+        save(answer);
     }
     
-    public void updateQuestion(Question question){
-        update(question);
+    public void updateAnswer(Answer Answer){
+        update(Answer);
     }
     
-    public Question getQuestion(int id) {  
-        return em.find(Question.class, id);  
+    public List<Answer> getAnswersQuestion(int idquestion){
+        String requete = "select a from Answer a where ";
+        List<Answer> liste = null;
+        //liste = query.getResultList(); 
+        return liste;
     }
 }
