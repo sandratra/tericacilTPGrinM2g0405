@@ -25,7 +25,7 @@ public class Question implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    private User user;
+    private Member user;
     private String title;
     private String content;
     private LocalDateTime datepost;

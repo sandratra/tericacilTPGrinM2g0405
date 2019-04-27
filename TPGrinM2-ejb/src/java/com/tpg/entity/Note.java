@@ -29,7 +29,7 @@ public class Note implements Serializable {
     @OneToMany
     private List<Answer> answer;
     @OneToOne
-    private User user;
+    private Member user;
 
     public List<Answer> getAnswer() {
         return answer;
@@ -39,11 +39,11 @@ public class Note implements Serializable {
         this.answer = answer;
     }
 
-    public User getUser() {
+    public Member getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Member user) {
         this.user = user;
     }
     

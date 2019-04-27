@@ -5,8 +5,7 @@
  */
 package com.tpg.session;
 
-import com.tpg.entity.Member;
-import javax.annotation.sql.DataSourceDefinition;
+import com.tpg.entity.UserType;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
@@ -16,27 +15,24 @@ import javax.persistence.PersistenceContext;
  *
  * @author EBI
  */
-
 @Stateless
 @LocalBean
-public class UserManager {
+public class UserTypeManager {
 
     @PersistenceContext(unitName = "TPGrinM2-ejbPU")
     private EntityManager em;
-
-    private void save(Object object) {
-        em.persist(object);
-    }
     
     private void update(Object object){
         em.merge(object);
     }
     
-    public void createUser(Member user){
-        save(user);
+    public long createUserType(UserType user){
+        em.persist(user);
+        //em.flush();
+        return user.getId();               
     }
     
-    public void updateUser(Member user){
+    public void updateUserType(UserType user){
         update(user);
     }
 }

@@ -15,5 +15,15 @@
     </h:form>
     <br/>
     <h:link outcome="/admin/index" value="Page pour administrateurs"/>
+    <h:panelGroup rendered="#{not empty request.userPrincipal}">
+      <h:form>
+        #{request.userPrincipal.name}
+        <h:outputText value=" (Administrateur) "
+                      rendered = "#{request.isUserInRole('admin')}"/>
+
+        <h:commandButton value="Logout" action="#{loginBean.logout()}"/>
+      </h:form>
+
+    </h:panelGroup>
   </h:body>
 </html>

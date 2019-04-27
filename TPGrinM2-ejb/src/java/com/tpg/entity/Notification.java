@@ -27,7 +27,7 @@ public class Notification implements Serializable {
     private Long id;
     private LocalDateTime date;
     @OneToOne
-    private User user;
+    private Member user;
     @OneToOne
     private Question question;
 
@@ -47,11 +47,11 @@ public class Notification implements Serializable {
         this.date = date;
     }
 
-    public User getUser() {
+    public Member getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Member user) {
         this.user = user;
     }
 

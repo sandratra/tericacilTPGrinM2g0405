@@ -26,16 +26,16 @@ public class Answer implements Serializable {
     private Long id;
     
     @OneToOne
-    private User user;
+    private Member user;
     private String content;
     private Date date;
     private boolean hasSolved;
 
-    public User getUser() {
+    public Member getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Member user) {
         this.user = user;
     }
 
