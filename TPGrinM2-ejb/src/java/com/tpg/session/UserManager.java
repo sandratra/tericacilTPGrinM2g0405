@@ -21,8 +21,8 @@ import javax.persistence.PersistenceContext;
     name="java:app/jdbc/tpgrin",
     serverName="localhost",
     portNumber=1527,
-    user="tpgrin", // nom et
-    password="tpgrin", // mot de passe que vous avez donnés lors de la création de la base de données
+    user="tpgrin",
+    password="tpgrin",
     databaseName="tpgrin"
 )
 @Stateless
