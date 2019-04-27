@@ -5,21 +5,35 @@
  */
 package com.tpg.managedbean;
 
+import com.tpg.entity.Member;
+import com.tpg.session.UserManager;
+import com.tpg.utils.HashMdp;
+import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
  * @author asus
  */
 @Named(value = "inscriptionBean")
-@Dependent
+@RequestScoped
 public class InscriptionBean {
+
+    @EJB
+    UserManager userManager;
+
+    @Inject
+    // Pour coder le mot de passe
+    private HashMdp passwordHash;
 
     private String firstname;
     private String lastname;
     private String email;
     private String password;
+
+    private Member member;
 
     public String getFirstname() {
         return firstname;
@@ -52,10 +66,23 @@ public class InscriptionBean {
     public void setPassword(String password) {
         this.password = password;
     }
+
     /**
      * Creates a new instance of InscriptionBean
      */
     public InscriptionBean() {
     }
-    
+
+    public void inscrire() {
+        member = new Member();
+        member.setFirstname(firstname);
+        member.setLastname(lastname);
+        member.setEmail(email);
+        String mdp = passwordHash.generate(password);
+        member.setPassword(mdp);
+
+        userManager.createUser(member);
+
+    }
+
 }

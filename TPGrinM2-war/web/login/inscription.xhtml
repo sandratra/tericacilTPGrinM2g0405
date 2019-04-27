@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       <h:messages errorStyle="font-weight: bold; color: red;"
+                globalOnly="true"/>
+    <h:form id="form">
+      <h:outputText value="#{bundle.Login_Message}"/>
+
+      <h:panelGrid columns="3">
+        <h:outputText value="Nom de login :" />
+        <h:inputText id="firstname" value="#{inscriptionBean.firstname}" 
+                     required="true"
+                     requiredMessage="Vous devez entrer un nom de login"/>
+        <h:message for="firstname" errorStyle="font-weight: bold; color: red;"/>
+        
+        <h:outputText value="Prenom :" />
+        <h:inputText id="lastname" value="#{inscriptionBean.lastname}" 
+                     required="true"
+                     requiredMessage="Vous devez entrer un nom de login"/>
+        <h:message for="lastname" errorStyle="font-weight: bold; color: red;"/>
+        
+        <h:outputText value="Email :" />
+        <h:inputText id="email" value="#{inscriptionBean.email}" 
+                     required="true"
+                     requiredMessage="Vous devez entrer un email"/>
+        <h:message for="email" errorStyle="font-weight: bold; color: red;"/>
+        
+        <h:outputText value="Mot de passe : "/>
+        <h:inputSecret id="password"
+                       value="#{inscriptionBean.password}"
+                       required="true"
+                       requiredMessage="Vous devez entrer un mot de passe"/>
+        <h:message for="password" errorStyle="font-weight: bold; color: red;"/>
+      </h:panelGrid>
+      <p><h:commandButton value="s'inscrire" action="#{inscriptionBean.inscrire}"/></p>
+    </h:form>
+    </h:body>
+</html>
+
