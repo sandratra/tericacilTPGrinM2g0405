@@ -6,7 +6,7 @@
 package com.tpg.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +28,7 @@ public class Answer implements Serializable {
     @OneToOne
     private Member user;
     private String content;
-    private Date date;
+    private Timestamp date;
     private boolean hasSolved;
     @OneToOne
     private Question question;
@@ -57,11 +57,11 @@ public class Answer implements Serializable {
         this.content = content;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
