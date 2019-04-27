@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -17,6 +19,8 @@ import javax.persistence.OneToOne;
  * @author asus
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name = "Member.findByName", query = "SELECT c FROM Member c WHERE c.firstname = :name")})
 public class Member implements Serializable {
 
     private static final long serialVersionUID = 1L;

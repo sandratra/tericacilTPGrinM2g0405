@@ -6,11 +6,12 @@
 package com.tpg.session;
 
 import com.tpg.entity.Member;
-import javax.annotation.sql.DataSourceDefinition;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -38,5 +39,12 @@ public class UserManager {
     
     public void updateUser(Member user){
         update(user);
+    }
+    public Member findByName(String name) {
+       Query query = em.createNamedQuery("Member.findByName");
+       query.setParameter("name", name);
+       List<Member> list = query.getResultList(); 
+       if(list.size()>0) return list.get(0);
+       return null;
     }
 }
