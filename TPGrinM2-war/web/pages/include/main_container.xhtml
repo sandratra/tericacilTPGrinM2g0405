@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
     xmlns:p="http://primefaces.org/ui"
-    xmlns:pm="http://primefaces.org/mobile"
-    xmlns:ui="http://java.sun.com/jsf/facelets">  
+    xmlns:pm="http://primefaces.org/mobile">  
   
-    <h:head>  
-        <title>Prime face</title>
-    </h:head>  
-      
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <h:outputStylesheet name="/css/primefaces.css"/>
+        <h:outputStylesheet name="/css/main.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+    
     <h:body>
-        <div>inside</div>
-    </h:body>  
+        
+        <div id="wrapper">
+            <div id="header">
+                <ui:insert name="header">
+                    <ui:include src="header.xhtml"></ui:include>
+                </ui:insert>
+            </div>
+            <div id="sidebar1">
+                <ui:insert name="sidebar">
+                    <ui:include src="sidebar.xhtml"></ui:include>
+                </ui:insert>
+            </div>
+            <div id="main_container" class="main_container userAdmin_container container_16 clearfix ui-sortable">
+                <ui:insert name="content">
+                    <ui:include src="content.xhtml"></ui:include>
+                </ui:insert>
+            </div>
+            <div id="footer">
+                <ui:insert name="footer">
+                    <ui:include src="footer.xhtml"></ui:include>
+                </ui:insert>
+            </div>
+
+        </div>
+    </h:body>
+    
+    <!--JS-->
+    <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+    <h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
 </html>  
