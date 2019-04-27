@@ -79,4 +79,13 @@ public class TagManager {
             }
         }
     }
+    
+    public List<Tag> getTags(int idquestion){
+        String requete = "select a.tag from QuestionTag a where a.question.id = :idquestion";
+        Query query = em.createQuery(requete);
+        query.setParameter("idquestion", idquestion);
+        List<Tag> liste = null;
+        liste = query.getResultList(); 
+        return liste;
+    }
 }

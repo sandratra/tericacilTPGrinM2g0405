@@ -53,7 +53,7 @@ public class QuestionManager {
         update(question);
     }
     
-    public Question getQuestion(int id) {  
+    public Question getQuestion(long id) {  
         return em.find(Question.class, id);  
     }
     
