@@ -28,12 +28,17 @@ and open the template in the editor.
                              value="#{questionBean.datePost}" 
                              required="true"
                              requiredMessage="Vous devez entrer une date">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
                 </h:inputText>
                 <h:message for="date" errorStyle="font-weight: bold; color: red;"/>
                 <h:outputText value="Contenu : "/>
                 <h:inputTextarea id="contenu"
                                value="#{questionBean.content}"/>
+                <h:outputText value="Tags : " />
+                <h:inputText id="label" value="#{questionBean.label}" 
+                             required="true"
+                             requiredMessage="Vous devez entrer un tags"/>
+                <h:message for="label" errorStyle="font-weight: bold; color: red;"/>
             </h:panelGrid>
             <p><h:commandButton value="Login" action="#{questionBean.saveQuestion}"/></p>
         </h:form>
