@@ -42,9 +42,9 @@ public class Init {
     @EJB
     private UserTypeManager usertpManager;
     
-        @Inject
-  // Pour coder le mot de passe
-  private HashMdp passwordHash;
+    @Inject
+    // Pour coder le mot de passe
+    private HashMdp passwordHash;
         
         @Resource(lookup = "java:app/jdbc/tpgrin")
   private DataSource dataSource;

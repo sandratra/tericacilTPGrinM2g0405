@@ -40,8 +40,8 @@ public class QuestionManager {
         em.persist(object);
     }
     
-    private void update(Object object){
-        em.merge(object);
+    private Question update(Question object){
+        return em.merge(object);
     }
     
     public void createQuestion(Question question){
@@ -51,8 +51,11 @@ public class QuestionManager {
         save(question);
     }
     
-    public void updateQuestion(Question question){
-        update(question);
+    public Question updateQuestion(Question question){
+        String name = facesContext.getExternalContext().getUserPrincipal().getName();
+        Member user = userManager.findByName(name);
+        question.setUser(user);
+        return update(question);
     }
     
     public Question getQuestion(long id) {  

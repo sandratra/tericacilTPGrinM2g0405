@@ -88,4 +88,11 @@ public class TagManager {
         liste = query.getResultList(); 
         return liste;
     }
+    
+    public void deleteTag(int idquestion){
+        String requete = "delete from QuestionTag a where a.question.id = :idquestion";
+        Query query = em.createQuery(requete);
+        query.setParameter("idquestion", idquestion);
+        query.executeUpdate();
+    }
 }

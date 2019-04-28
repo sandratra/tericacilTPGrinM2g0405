@@ -27,9 +27,12 @@ public class QuestionBean {
     private String content;
     private String datePost;
     private String label;
+    private boolean isResolved;
     
     private String recherche;
     private List<Question> listQuestion;
+    private List<Tag> listTag;
+    private int id;
     
     @EJB
     QuestionManager questionManager;
@@ -49,6 +52,14 @@ public class QuestionBean {
 
     public void setListQuestion(List<Question> listQuestion) {
         this.listQuestion = listQuestion;
+    }
+
+    public boolean isIsResolved() {
+        return isResolved;
+    }
+
+    public void setIsResolved(boolean isResolved) {
+        this.isResolved = isResolved;
     }
 
     public Tag getTag() {
@@ -106,6 +117,22 @@ public class QuestionBean {
     public void setRecherche(String recherche) {
         this.recherche = recherche;
     }
+
+    public List<Tag> getListTag() {
+        return listTag;
+    }
+
+    public void setListTag(List<Tag> listTag) {
+        this.listTag = listTag;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     
     
@@ -113,10 +140,27 @@ public class QuestionBean {
         question = new Question();
         question.setContent(content);
         question.setTitle(title);
-        //question.setDatepost(datePost);
+        question.setDatepost(Util.getDateDuJour());
         question.setResolved(false);
         questionManager.createQuestion(question);
         
+        tag = new Tag();
+        tag.setLabel(label);
+        tagManager.insertQuestionTag(label, question);
+        
+        return "question-fiche.xhtml?id="+question.getId()+"&amp;faces-redirect=true;includeViewParams=true";
+    }
+    
+    public String updateQuestion() {
+        question = new Question();
+        question.setContent(content);
+        question.setTitle(title);
+        question.setDatepost(Util.getDateDuJour());
+        question.setResolved(isResolved);
+        question.setId(id);
+        questionManager.updateQuestion(question);
+        
+        tagManager.deleteTag(id);
         tag = new Tag();
         tag.setLabel(label);
         tagManager.insertQuestionTag(label, question);
@@ -130,6 +174,14 @@ public class QuestionBean {
     public void loadListQuestion(){
         String search = Util.recherche(recherche);
         this.listQuestion = questionManager.getListQuestion(search);
+    }
+    
+    public void loadFicheQuestion(){
+        Question question = questionManager.getQuestion(id);
+        this.title=question.getTitle();
+        this.content=question.getContent();
+        listTag = tagManager.getTags(id);
+        label = Util.getTagName(listTag);
     }
     
     public QuestionBean() {

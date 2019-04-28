@@ -5,8 +5,10 @@
  */
 package com.tpg.util;
 
+import com.tpg.entity.Tag;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -28,5 +30,13 @@ public class Util {
             joined = "%"+joined+"%";
         }
         return joined;
+    }
+    
+    public static String getTagName(List<Tag> liste) {
+        String[] name = new String[liste.size()];
+        for(int i=0; i<liste.size(); i++) {
+            name[i] = liste.get(i).getLabel();
+        }
+        return String.join("/", name);
     }
 }

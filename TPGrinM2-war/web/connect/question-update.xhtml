@@ -6,17 +6,23 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Votre question</title>
-    </h:head>
-    <h:body>
-        <h:messages errorStyle="font-weight: bold; color: red;"
+     <f:metadata>  
+    <f:viewParam name="id" value="#{questionBean.id}"  
+                 required="true"/>  
+    <f:viewAction action="#{questionBean.loadFicheQuestion}"/>  
+  </f:metadata>
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+       <h:messages errorStyle="font-weight: bold; color: red;"
                     globalOnly="true"/>
-        <h:form id="form">
+       <h:form id="form">
             <h:outputText value="#{bundle.Login_Message}"/>
-
+            <h:inputHidden id="id" value="#{questionBean.id}" />
             <h:panelGrid columns="3">
                 <h:outputText value="Titre : " />
                 <h:inputText id="title" value="#{questionBean.title}" 
@@ -31,9 +37,11 @@ and open the template in the editor.
                              required="true"
                              requiredMessage="Vous devez entrer un tags"/>
                 <h:message for="label" errorStyle="font-weight: bold; color: red;"/>
+                <br></br>
+                <h:selectBooleanCheckbox value="#{questionBean.isResolved}" /> Resolu
             </h:panelGrid>
-            <p><h:commandButton value="Login" action="#{questionBean.saveQuestion}"/></p>
+            <p><h:commandButton value="Login" action="#{questionBean.updateQuestion}"/></p>
         </h:form>
         <h:link outcome="/index" value="Page de démarrage"/>
-    </h:body>
+    </body>
 </html>
