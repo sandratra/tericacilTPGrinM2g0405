@@ -10,6 +10,8 @@ import com.tpg.entity.Tag;
 import com.tpg.session.QuestionManager;
 import com.tpg.session.QuestionTagManager;
 import com.tpg.session.TagManager;
+import com.tpg.util.Util;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -26,6 +28,9 @@ public class QuestionBean {
     private String datePost;
     private String label;
     
+    private String recherche;
+    private List<Question> listQuestion;
+    
     @EJB
     QuestionManager questionManager;
     
@@ -37,6 +42,14 @@ public class QuestionBean {
     
     private Question question;
     private Tag tag;
+
+    public List<Question> getListQuestion() {
+        return listQuestion;
+    }
+
+    public void setListQuestion(List<Question> listQuestion) {
+        this.listQuestion = listQuestion;
+    }
 
     public Tag getTag() {
         return tag;
@@ -85,10 +98,18 @@ public class QuestionBean {
     public void setLabel(String label) {
         this.label = label;
     }
+
+    public String getRecherche() {
+        return recherche;
+    }
+
+    public void setRecherche(String recherche) {
+        this.recherche = recherche;
+    }
     
     
     
-    public void saveQuestion() {
+    public String saveQuestion() {
         question = new Question();
         question.setContent(content);
         question.setTitle(title);
@@ -99,10 +120,18 @@ public class QuestionBean {
         tag = new Tag();
         tag.setLabel(label);
         tagManager.insertQuestionTag(label, question);
+        
+        return "question-fiche.xhtml?id="+question.getId()+"&amp;faces-redirect=true;includeViewParams=true";
     }
     /**
      * Creates a new instance of QuestionBean
      */
+    
+    public void loadListQuestion(){
+        String search = Util.recherche(recherche);
+        this.listQuestion = questionManager.getListQuestion(search);
+    }
+    
     public QuestionBean() {
     }
     

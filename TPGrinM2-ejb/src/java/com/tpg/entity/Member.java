@@ -14,27 +14,28 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
+
 /**
  *
  * @author asus
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name = "Member.findByName", query = "SELECT c FROM Member c WHERE c.firstname = :name")})
+    @NamedQuery(name = "Member.findByName", query = "SELECT c FROM Member c WHERE c.firstname = :name")})
 public class Member implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String firstname;
     private String lastname;
     private String email;
     private String password;
     @OneToOne
     private UserType userType;
-
+    
     public String getEmail() {
         return email;
     }
@@ -73,6 +74,7 @@ public class Member implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+       
     }
 
     public UserType getUserType() {

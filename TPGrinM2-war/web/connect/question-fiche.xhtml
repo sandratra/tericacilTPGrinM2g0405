@@ -31,6 +31,8 @@ and open the template in the editor.
             <p><h:commandButton value="Login" action="#{questionFicheBean.saveAnswer}"/></p>
             <ui:repeat value="#{questionFicheBean.listAnswer}" var="item">
                 <p><h:outputText value="#{item.content}" /></p>
+                <p><h:outputText value="#{item.user.firstname} #{item.user.lastname}" /></p>
+                <p><h:outputText value="#{item.date}" /></p>
             </ui:repeat> 
         </h:form>
         <h:link outcome="/index" value="Page de démarrage"/>

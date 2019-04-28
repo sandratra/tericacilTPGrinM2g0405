@@ -7,6 +7,7 @@ package com.tpg.session;
 
 import com.tpg.entity.Member;
 import com.tpg.entity.Question;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -14,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -56,5 +58,11 @@ public class QuestionManager {
     public Question getQuestion(long id) {  
         return em.find(Question.class, id);  
     }
-    
+
+    public List<Question> getListQuestion(String title) {
+       Query query = em.createNamedQuery("Question.findByTitle");
+       query.setParameter("titre", title);
+       List<Question> list = query.getResultList(); 
+       return list;
+    }
 }

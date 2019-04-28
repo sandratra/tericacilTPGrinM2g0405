@@ -80,7 +80,7 @@ public class InscriptionBean {
         member.setEmail(email);
         String mdp = passwordHash.generate(password);
         member.setPassword(mdp);
-
+        
         userManager.createUser(member);
 
     }
